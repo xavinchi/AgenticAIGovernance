@@ -1,0 +1,1869 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic AI Governance Playbook | 3S Enterprise Framework</title>
+  <meta name="description" content="An executive-grade practical playbook for governing Agentic AI across the enterprise using the 3S framework: Stream, System, Solution.">
+  <style>
+    :root {
+      --cap-blue: #0058ab;
+      --light-blue: #1db8f2;
+      --dark-blue: #121a38;
+      --turquoise: #00d5d0;
+      --yellow: #feb100;
+      --orange: #ff816e;
+      --teal: #00828e;
+      --purple: #71609e;
+      --deep-red: #8f3237;
+      --ink: #111936;
+      --muted: #54627b;
+      --soft: #eef7ff;
+      --line: #d9e6f5;
+      --surface: #ffffff;
+      --surface-blue: #f7fbff;
+      --shadow: 0 24px 60px rgba(18, 26, 56, 0.09);
+      --max: 1180px;
+      --radius: 8px;
+      --font: Ubuntu, "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--surface);
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .page-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      z-index: 50;
+      background: transparent;
+    }
+
+    .page-progress span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--dark-blue), var(--cap-blue) 35%, var(--light-blue) 72%, var(--turquoise));
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.93);
+      border-bottom: 1px solid rgba(217, 230, 245, 0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cap-blue);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cap-blue);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 50% 50% 50% 10%;
+      background: linear-gradient(135deg, var(--cap-blue), var(--turquoise));
+      transform: rotate(-35deg);
+      display: inline-block;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1d2947;
+    }
+
+    .links a {
+      text-decoration: none;
+      opacity: 0.76;
+    }
+
+    .links a.active,
+    .links a:hover {
+      color: var(--cap-blue);
+      opacity: 1;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 999px;
+      background: var(--cap-blue);
+      color: #fff;
+      font: 700 13px/1 var(--font);
+      padding: 13px 18px;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(0, 88, 171, 0.18);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+
+    .button:hover { transform: translateY(-1px); background: #004b91; }
+
+    .button.secondary {
+      color: var(--cap-blue);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 92px 24px;
+    }
+
+    .hero {
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.96fr) minmax(480px, 1fr);
+      align-items: center;
+      gap: 52px;
+      padding-top: 60px;
+      padding-bottom: 58px;
+    }
+
+    .rule {
+      height: 8px;
+      max-width: var(--max);
+      margin: 0 auto;
+      background: linear-gradient(90deg, var(--dark-blue), var(--cap-blue) 34%, var(--light-blue) 70%, var(--turquoise));
+    }
+
+    .label {
+      color: var(--cap-blue);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: 0.97;
+      letter-spacing: 0;
+      margin-bottom: 30px;
+      color: var(--dark-blue);
+      max-width: 780px;
+    }
+
+    h1 .dot { color: var(--cap-blue); }
+
+    h2 {
+      font-size: clamp(32px, 4.3vw, 58px);
+      line-height: 1.02;
+      color: var(--dark-blue);
+      margin-bottom: 22px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 24px;
+      line-height: 1.18;
+      color: var(--dark-blue);
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-size: 16px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: var(--dark-blue);
+    }
+
+    .lead {
+      font-size: 21px;
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .hero .lead { max-width: 620px; }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 700px;
+    }
+
+    .proof {
+      border-left: 1px solid var(--line);
+      padding-left: 16px;
+      min-height: 64px;
+    }
+
+    .proof strong {
+      display: block;
+      color: var(--dark-blue);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .proof span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .framework-visual {
+      position: relative;
+      min-height: 610px;
+      padding: 28px 20px 10px;
+    }
+
+    .diagram-svg {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .diagram-title {
+      font-size: 13px;
+      fill: var(--dark-blue);
+      font-weight: 600;
+    }
+
+    .diagram-label-main {
+      font-size: 24px;
+      fill: var(--cap-blue);
+      font-weight: 700;
+    }
+
+    .diagram-label-sub {
+      font-size: 17px;
+      fill: var(--cap-blue);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .diagram-copy {
+      font-size: 12px;
+      fill: var(--muted);
+      font-weight: 600;
+    }
+
+    .diagram-icon {
+      fill: none;
+      stroke: var(--cap-blue);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .diagram-light {
+      fill: #fff;
+      stroke: #b9dcfb;
+      stroke-width: 2.6;
+    }
+
+    .diagram-dash {
+      fill: none;
+      stroke: #76bdf4;
+      stroke-width: 2;
+      stroke-dasharray: 4 5;
+      stroke-linecap: round;
+    }
+
+    .stack {
+      position: relative;
+      width: min(100%, 560px);
+      margin: 0 auto;
+      min-height: 560px;
+    }
+
+    .layer {
+      position: absolute;
+      left: 19%;
+      width: 62%;
+      height: 120px;
+      border: 2px solid #9bd2ff;
+      background: rgba(255, 255, 255, 0.9);
+      transform: skewY(-14deg) rotate(0deg);
+      box-shadow: 0 22px 50px rgba(0, 88, 171, 0.08);
+    }
+
+    .layer::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px dashed rgba(0, 88, 171, 0.22);
+    }
+
+    .layer.one { top: 62px; }
+    .layer.two { top: 234px; }
+    .layer.three { top: 406px; }
+
+    .layer-title {
+      position: absolute;
+      left: 0;
+      width: 172px;
+      color: var(--cap-blue);
+    }
+
+    .layer-title b {
+      display: block;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+    }
+
+    .layer-title span {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    .layer-title small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      margin-top: 8px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .title-one { top: 72px; }
+    .title-two { top: 244px; }
+    .title-three { top: 416px; }
+
+    .node {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      border: 1px solid #b8dbff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      color: var(--cap-blue);
+      box-shadow: 0 10px 28px rgba(0, 88, 171, 0.09);
+      font-size: 18px;
+      z-index: 2;
+    }
+
+    .n1 { top: 22px; left: 49%; }
+    .n2 { top: 72px; right: 8%; }
+    .n3 { top: 240px; left: 55%; }
+    .n4 { top: 412px; right: 15%; }
+    .n5 { top: 445px; left: 32%; }
+
+    .connector {
+      position: absolute;
+      left: 50%;
+      top: 62px;
+      width: 1px;
+      height: 418px;
+      border-left: 1px dashed rgba(0, 88, 171, 0.36);
+    }
+
+    .bracket {
+      position: absolute;
+      right: 0;
+      top: 118px;
+      height: 346px;
+      width: 76px;
+      border-right: 2px solid #b8c8de;
+      border-top: 2px solid #b8c8de;
+      border-bottom: 2px solid #b8c8de;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .bracket span {
+      position: absolute;
+      right: -36px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .center { text-align: center; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .insight-card,
+    .plain-card,
+    .download-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 10px 24px rgba(18, 26, 56, 0.04);
+    }
+
+    .insight-card {
+      padding: 26px;
+      min-height: 210px;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      color: var(--cap-blue);
+      margin-bottom: 22px;
+    }
+
+    .insight-card .metric {
+      font-size: 34px;
+      line-height: 1;
+      color: var(--dark-blue);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .confidence-line {
+      margin: 38px auto 0;
+      font-size: 19px;
+      color: var(--dark-blue);
+      max-width: 760px;
+    }
+
+    .confidence-line strong { color: var(--cap-blue); }
+
+    .insight-card p,
+    .plain-card p,
+    .download-card p,
+    li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .band {
+      background: var(--surface-blue);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 58px;
+      align-items: start;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .plain-card {
+      padding: 28px;
+    }
+
+    .plain-card.accent {
+      border-top: 6px solid var(--cap-blue);
+    }
+
+    .plain-card.teal { border-top-color: var(--turquoise); }
+    .plain-card.orange { border-top-color: var(--orange); }
+    .plain-card.yellow { border-top-color: var(--yellow); }
+
+    .quote {
+      padding: 28px;
+      border-left: 6px solid var(--cap-blue);
+      background: #fff;
+      box-shadow: var(--shadow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--dark-blue);
+      font-size: 22px;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .framework-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 16px 34px rgba(18, 26, 56, 0.05);
+    }
+
+    .framework-table th,
+    .framework-table td {
+      text-align: left;
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .framework-table th {
+      color: var(--dark-blue);
+      background: #f5fbff;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .framework-table tr:last-child td { border-bottom: 0; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--soft);
+      color: var(--cap-blue);
+      font-weight: 700;
+      font-size: 12px;
+      margin: 2px 4px 2px 0;
+      white-space: nowrap;
+    }
+
+    .overview-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: start;
+      gap: 26px;
+      margin-top: 44px;
+    }
+
+    .overview-item {
+      position: relative;
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .overview-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 34px;
+      right: -22px;
+      width: 32px;
+      height: 1px;
+      background: #9fb4cc;
+    }
+
+    .overview-icon {
+      width: 70px;
+      height: 70px;
+      border: 2px solid var(--cap-blue);
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      color: var(--cap-blue);
+      background: #fff;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .overview-item p {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .page-ref {
+      color: var(--cap-blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .standards-strip {
+      margin-top: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      display: grid;
+      grid-template-columns: 1.2fr repeat(5, 1fr);
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(18, 26, 56, 0.04);
+    }
+
+    .standards-intro,
+    .standard {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      border-right: 1px solid var(--line);
+    }
+
+    .standard:last-child { border-right: 0; }
+
+    .standards-intro {
+      color: var(--cap-blue);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .spark {
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, var(--cap-blue), var(--turquoise));
+      clip-path: polygon(50% 0, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0 50%, 38% 36%);
+      flex: 0 0 auto;
+    }
+
+    .standard b {
+      color: var(--dark-blue);
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .standard span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .inside-showcase {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 70px;
+      align-items: center;
+      margin-top: 36px;
+    }
+
+    .toc-list {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 16px 34px rgba(18, 26, 56, 0.05);
+    }
+
+    .toc-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      min-height: 56px;
+    }
+
+    .toc-row:last-child { border-bottom: 0; }
+    .toc-row.active {
+      border: 1px solid var(--cap-blue);
+      margin: -1px;
+      border-radius: var(--radius);
+      background: #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .toc-row strong {
+      color: var(--cap-blue);
+      font-size: 15px;
+      line-height: 1;
+      align-self: center;
+    }
+
+    .toc-row b {
+      color: var(--dark-blue);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+
+    .book-area {
+      display: grid;
+      grid-template-columns: minmax(190px, 290px) 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .book {
+      min-height: 360px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.99)),
+        repeating-linear-gradient(168deg, transparent 0 16px, rgba(0,88,171,0.18) 17px 18px);
+      box-shadow: 22px 28px 50px rgba(18, 26, 56, 0.14);
+      border-radius: 2px 8px 8px 2px;
+      padding: 44px 28px 30px;
+      transform: perspective(900px) rotateY(-7deg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--dark-blue), var(--cap-blue), var(--light-blue), var(--turquoise));
+    }
+
+    .book h3 {
+      font-size: 34px;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .book p {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 190px;
+    }
+
+    .book .brand {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      font-size: 22px;
+    }
+
+    .book .brand-logo { width: 145px; }
+
+    .benefits {
+      display: grid;
+      gap: 22px;
+    }
+
+    .benefit {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .benefit .card-icon { margin: 0; }
+    .benefit p { margin-bottom: 0; font-size: 13px; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .principle {
+      background: #fff;
+      padding: 26px;
+      min-height: 190px;
+    }
+
+    .principle strong {
+      display: block;
+      color: var(--dark-blue);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .model-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 22px;
+      min-height: 190px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius);
+    }
+
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      top: 42px;
+      right: -13px;
+      width: 22px;
+      height: 1px;
+      background: #b8c8de;
+    }
+
+    .flow-step:last-child::after { display: none; }
+
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--cap-blue);
+      color: var(--cap-blue);
+      border-radius: 50%;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .risk-map {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .risk-cell {
+      background: #fff;
+      padding: 18px;
+      min-height: 150px;
+    }
+
+    .risk-cell strong {
+      display: block;
+      color: var(--dark-blue);
+      margin-bottom: 8px;
+    }
+
+    .maturity {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      background: #fff;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .maturity-level {
+      padding: 24px;
+      border-right: 1px solid var(--line);
+      min-height: 360px;
+      position: relative;
+    }
+
+    .maturity-level:last-child { border-right: 0; }
+
+    .maturity-level:nth-child(1) { border-top: 8px solid #b8c8de; }
+    .maturity-level:nth-child(2) { border-top: 8px solid var(--light-blue); }
+    .maturity-level:nth-child(3) { border-top: 8px solid var(--cap-blue); }
+    .maturity-level:nth-child(4) { border-top: 8px solid var(--teal); }
+    .maturity-level:nth-child(5) { border-top: 8px solid var(--turquoise); }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 32px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--dark-blue), var(--cap-blue), var(--light-blue), var(--turquoise));
+    }
+
+    .phase {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 72px 24px 26px;
+      min-height: 360px;
+    }
+
+    .phase::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 5px solid var(--cap-blue);
+      z-index: 1;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px 28px;
+      margin-top: 28px;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .check span {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--cap-blue);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .offer {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius);
+    }
+
+    .offer b {
+      color: var(--dark-blue);
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .download-card {
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .download-card button {
+      border: 0;
+      padding: 0;
+      background: none;
+      color: var(--cap-blue);
+      font: 700 13px/1.2 var(--font);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .source-list {
+      columns: 2;
+      column-gap: 42px;
+      color: var(--muted);
+      font-size: 13px;
+      padding-left: 18px;
+    }
+
+    .source-list li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 24px 60px;
+      text-align: center;
+      color: var(--cap-blue);
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .note {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--turquoise);
+      padding: 22px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--muted);
+    }
+
+    .hide-mobile { display: initial; }
+
+    @media (max-width: 1050px) {
+      .links { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        min-height: auto;
+      }
+      .framework-visual { min-height: 520px; }
+      .summary-grid,
+      .offer-grid { grid-template-columns: repeat(2, 1fr); }
+      .overview-flow,
+      .standards-strip,
+      .inside-showcase,
+      .book-area { grid-template-columns: 1fr; }
+      .overview-item:not(:last-child)::after { display: none; }
+      .standards-intro,
+      .standard {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .standard:last-child { border-bottom: 0; }
+      .model-flow,
+      .risk-map,
+      .maturity,
+      .timeline { grid-template-columns: 1fr; }
+      .flow-step::after,
+      .timeline::before { display: none; }
+      .maturity-level {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        min-height: auto;
+      }
+      .maturity-level:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 780px) {
+      .section { padding: 68px 20px; }
+      .nav { padding: 16px 20px; }
+      .button { padding: 12px 14px; }
+      .hero { padding-top: 42px; }
+      h1 { font-size: 52px; }
+      .lead { font-size: 18px; }
+      .proof-row,
+      .summary-grid,
+      .two-col,
+      .three-col,
+      .principles,
+      .checklist,
+      .offer-grid,
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+      .source-list { columns: 1; }
+      .book {
+        min-height: 320px;
+        transform: none;
+      }
+      .framework-visual {
+        min-height: 460px;
+        padding: 0;
+        overflow: hidden;
+      }
+      .diagram-svg { min-width: 430px; transform: translateX(-18px); }
+      .framework-table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .framework-table th,
+      .framework-table td {
+        min-width: 150px;
+      }
+      .bracket { display: none; }
+      .hide-mobile { display: none; }
+    }
+
+    @media print {
+      header, .page-progress, .hero-actions, .download-card button { display: none; }
+      .section { padding: 36px 24px; }
+      .band { background: #fff; }
+      .plain-card, .insight-card, .download-card, .phase, .offer { box-shadow: none; }
+      body { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-progress" aria-hidden="true"><span id="pageProgress"></span></div>
+  <header>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Capgemini">
+        <span class="brand-logo">Capgemini<span class="brand-mark" aria-hidden="true"></span></span>
+      </a>
+      <div class="links" id="navLinks">
+        <a href="#executive-summary">Executive Summary</a>
+        <a href="#framework">3S Framework</a>
+        <a href="#operating-model">Operating Model</a>
+        <a href="#risk-controls">Risk and Controls</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#assets">Assets</a>
+      </div>
+      <a class="button" href="#assets">Get in touch</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="rule" aria-hidden="true"></div>
+
+    <section class="section hero">
+      <div>
+        <p class="label">Agentic AI Governance</p>
+        <h1>Govern agents at enterprise speed<span class="dot">.</span></h1>
+        <p class="lead">A practical playbook to design, operate, and evolve governance for agentic AI so enterprises can innovate with confidence, manage risk, and deliver real value.</p>
+        <div class="hero-actions">
+          <a class="button" href="#framework">Explore the 3S framework</a>
+          <a class="button secondary" href="#assets">Download templates</a>
+        </div>
+        <div class="proof-row">
+          <div class="proof">
+            <strong>Trust by design</strong>
+            <span>Controls embedded into architecture, runtime, and operating routines.</span>
+          </div>
+          <div class="proof">
+            <strong>Human and AI</strong>
+            <span>Risk-based oversight that keeps people accountable for consequential outcomes.</span>
+          </div>
+          <div class="proof">
+            <strong>Outcome focused</strong>
+            <span>Governance that accelerates value, not slows it down.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="framework-visual" aria-label="3S framework visual">
+        <svg class="diagram-svg" viewBox="0 0 620 660" role="img" aria-labelledby="diagramTitle">
+          <title id="diagramTitle">The 3S Framework for Agentic AI Governance</title>
+          <defs>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+              <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0058AB" flood-opacity="0.08"/>
+            </filter>
+          </defs>
+
+          <text x="16" y="102" class="diagram-label-main">S1</text>
+          <text x="16" y="128" class="diagram-label-sub">STREAM</text>
+          <text x="16" y="158" class="diagram-copy">Orchestrate agent</text>
+          <text x="16" y="176" class="diagram-copy">workflows and value</text>
+
+          <text x="16" y="285" class="diagram-label-main">S2</text>
+          <text x="16" y="311" class="diagram-label-sub">SYSTEM</text>
+          <text x="16" y="341" class="diagram-copy">Secure, observe and</text>
+          <text x="16" y="359" class="diagram-copy">control the agent</text>
+          <text x="16" y="377" class="diagram-copy">runtime</text>
+
+          <text x="16" y="470" class="diagram-label-main">S3</text>
+          <text x="16" y="496" class="diagram-label-sub">SOLUTION</text>
+          <text x="16" y="526" class="diagram-copy">Build on trusted</text>
+          <text x="16" y="544" class="diagram-copy">foundations and</text>
+          <text x="16" y="562" class="diagram-copy">enterprise assets</text>
+
+          <g filter="url(#softShadow)">
+            <path d="M182 158 L354 72 L522 158 L354 246 Z" fill="#fbfdff" stroke="#a9d5fb" stroke-width="3"/>
+            <path d="M182 158 L354 246 L522 158 L522 171 L354 263 L182 171 Z" fill="#eef8ff" stroke="#a9d5fb" stroke-width="3"/>
+            <path d="M182 158 L354 72 L522 158 L354 246 Z" fill="none" stroke="#d9efff" stroke-width="1.2"/>
+
+            <path d="M182 340 L354 254 L522 340 L354 428 Z" fill="#fbfdff" stroke="#a9d5fb" stroke-width="3"/>
+            <path d="M182 340 L354 428 L522 340 L522 353 L354 445 L182 353 Z" fill="#eef8ff" stroke="#a9d5fb" stroke-width="3"/>
+
+            <path d="M182 522 L354 436 L522 522 L354 610 Z" fill="#fbfdff" stroke="#a9d5fb" stroke-width="3"/>
+            <path d="M182 522 L354 610 L522 522 L522 535 L354 627 L182 535 Z" fill="#eef8ff" stroke="#a9d5fb" stroke-width="3"/>
+          </g>
+
+          <path class="diagram-dash" d="M242 72 C260 104 292 132 332 151"/>
+          <path class="diagram-dash" d="M354 56 L354 148"/>
+          <path class="diagram-dash" d="M466 72 C448 104 416 132 376 151"/>
+          <path class="diagram-dash" d="M260 195 L260 318"/>
+          <path class="diagram-dash" d="M450 195 L450 318"/>
+          <path class="diagram-dash" d="M260 370 L260 500"/>
+          <path class="diagram-dash" d="M354 430 L354 502"/>
+          <path class="diagram-dash" d="M450 370 L450 500"/>
+          <path class="diagram-dash" d="M260 318 L450 318"/>
+          <path class="diagram-dash" d="M296 355 C328 378 386 378 420 355"/>
+
+          <circle class="diagram-light" cx="242" cy="44" r="28"/>
+          <path class="diagram-icon" d="M242 40a7 7 0 1 0 0-14a7 7 0 0 0 0 14zM228 58c3-10 25-10 28 0"/>
+
+          <circle class="diagram-light" cx="354" cy="28" r="28"/>
+          <rect class="diagram-icon" x="340" y="24" width="28" height="24" rx="6"/>
+          <path class="diagram-icon" d="M346 24v-8M362 24v-8M335 35h-6M379 35h-6"/>
+          <circle cx="348" cy="36" r="2.6" fill="#0058ab"/>
+          <circle cx="360" cy="36" r="2.6" fill="#0058ab"/>
+
+          <circle class="diagram-light" cx="466" cy="44" r="28"/>
+          <path class="diagram-icon" d="M455 49h24a10 10 0 0 0 1-20a15 15 0 0 0-28 5a8 8 0 0 0 3 15z"/>
+
+          <ellipse cx="354" cy="158" rx="45" ry="17" fill="#fff" stroke="#78bdf0" stroke-width="3"/>
+          <ellipse cx="354" cy="158" rx="22" ry="8" fill="#f3faff" stroke="#b9dcfb" stroke-width="2"/>
+          <circle cx="354" cy="158" r="4" fill="#0058ab"/>
+
+          <circle cx="260" cy="320" r="11" fill="#fff" stroke="#78bdf0" stroke-width="3"/>
+          <circle cx="260" cy="320" r="3" fill="#0058ab"/>
+          <circle cx="450" cy="320" r="11" fill="#fff" stroke="#78bdf0" stroke-width="3"/>
+          <circle cx="450" cy="320" r="3" fill="#0058ab"/>
+          <circle cx="308" cy="353" r="10" fill="#fff" stroke="#78bdf0" stroke-width="3"/>
+          <circle cx="308" cy="353" r="3" fill="#0058ab"/>
+          <circle cx="354" cy="374" r="10" fill="#fff" stroke="#78bdf0" stroke-width="3"/>
+          <circle cx="354" cy="374" r="3" fill="#0058ab"/>
+          <circle cx="402" cy="353" r="10" fill="#fff" stroke="#78bdf0" stroke-width="3"/>
+          <circle cx="402" cy="353" r="3" fill="#0058ab"/>
+
+          <rect class="diagram-icon" x="337" y="303" width="34" height="37" rx="4"/>
+          <path class="diagram-icon" d="M344 303v-13a10 10 0 0 1 20 0v13"/>
+
+          <path class="diagram-icon" d="M248 512c0 9 38 9 38 0v-34c0-9-38-9-38 0z"/>
+          <path class="diagram-icon" d="M248 478c0 9 38 9 38 0M248 495c0 9 38 9 38 0"/>
+
+          <path class="diagram-icon" d="M354 470l35 14v33c0 22-18 38-35 45c-17-7-35-23-35-45v-33z"/>
+          <path class="diagram-icon" d="M340 517l11 11l22-29"/>
+
+          <rect class="diagram-icon" x="446" y="484" width="17" height="17" rx="1"/>
+          <rect class="diagram-icon" x="476" y="484" width="17" height="17" rx="1"/>
+          <rect class="diagram-icon" x="446" y="516" width="17" height="17" rx="1"/>
+          <rect class="diagram-icon" x="476" y="516" width="17" height="17" rx="1"/>
+
+          <path d="M560 170 h30 q18 0 18 18 v304 q0 18-18 18 h-72" fill="none" stroke="#c8d4e2" stroke-width="3"/>
+          <path d="M559 170 l8 -7M559 170 l8 7" fill="none" stroke="#121a38" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="596" y="376" transform="rotate(-90 596 376)" class="diagram-copy" style="font-size:14px; fill:#121a38;">Continuous Trust &amp; Improvement</text>
+
+          <text x="236" y="642" class="diagram-title">The 3S Framework for Agentic AI Governance</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="executive-summary" class="section center">
+      <p class="label">Executive Summary</p>
+      <h2>Agentic AI changes the enterprise control problem.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Traditional AI governance was built for models that generate outputs. Agentic AI requires governance for systems that can pursue goals, call tools, use memory, interact with other agents, and trigger business actions.</p>
+
+      <div class="summary-grid">
+        <article class="insight-card">
+          <div class="card-icon">↗</div>
+          <div class="metric">15%</div>
+          <h4>Business decisions by agents</h4>
+          <p>Gartner predicts that by 2028, 15% of day-to-day business decisions will be made autonomously by AI agents.</p>
+        </article>
+        <article class="insight-card">
+          <div class="card-icon">✓</div>
+          <div class="metric">13%</div>
+          <h4>Governance readiness gap</h4>
+          <p>Only 13% of surveyed leaders said their data and analytics governance function was fully capable of leading AI governance.</p>
+        </article>
+        <article class="insight-card">
+          <div class="card-icon">!</div>
+          <div class="metric">3.8x</div>
+          <h4>Governance drives impact</h4>
+          <p>Gartner research in the source pack links expanded AI security policies with materially higher business impact from AI-ready data.</p>
+        </article>
+        <article class="insight-card">
+          <div class="card-icon">◌</div>
+          <div class="metric">2026</div>
+          <h4>Standards are moving fast</h4>
+          <p>NIST, OWASP, CSA, ISO, EU AI Act, and industry bodies are rapidly shaping the control baseline for agentic systems.</p>
+        </article>
+      </div>
+      <p class="confidence-line">This playbook shows how to govern agents <strong>with confidence, at scale.</strong></p>
+    </section>
+
+    <section class="section center">
+      <p class="label">Playbook Overview</p>
+      <h2>A practical end-to-end governance playbook.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Everything leaders need to design, run, and evolve agentic AI governance across the enterprise.</p>
+
+      <div class="overview-flow">
+        <article class="overview-item">
+          <div class="overview-icon">◇</div>
+          <h4>Framework</h4>
+          <p>The 3S model to organize governance at every layer.</p>
+          <span class="page-ref">P. 04</span>
+        </article>
+        <article class="overview-item">
+          <div class="overview-icon">✓</div>
+          <h4>Operating Model</h4>
+          <p>Roles, structure, policies, and decision rights.</p>
+          <span class="page-ref">P. 10</span>
+        </article>
+        <article class="overview-item">
+          <div class="overview-icon">≡</div>
+          <h4>Risk and Controls</h4>
+          <p>Risk taxonomy, control library, and assurance.</p>
+          <span class="page-ref">P. 16</span>
+        </article>
+        <article class="overview-item">
+          <div class="overview-icon">↗</div>
+          <h4>Maturity Model</h4>
+          <p>Assess maturity and prioritize what matters.</p>
+          <span class="page-ref">P. 22</span>
+        </article>
+        <article class="overview-item">
+          <div class="overview-icon">⇧</div>
+          <h4>Roadmap</h4>
+          <p>Phased plan to implement and scale governance.</p>
+          <span class="page-ref">P. 28</span>
+        </article>
+      </div>
+
+      <div class="standards-strip" aria-label="Standards and frameworks strip">
+        <div class="standards-intro"><span class="spark"></span><span>Built on leading frameworks and standards:</span></div>
+        <div class="standard"><b>NIST</b><span>AI RMF 1.0</span></div>
+        <div class="standard"><b>ISO</b><span>42001</span></div>
+        <div class="standard"><b>OECD</b><span>AI Principles</span></div>
+        <div class="standard"><b>WEF</b><span>AI Governance Alliance</span></div>
+        <div class="standard"><b>EU</b><span>AI Act</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="label">What's Inside</p>
+      <h2>A comprehensive guide for business and technology leaders.</h2>
+      <div class="inside-showcase">
+        <div class="toc-list" aria-label="Report contents">
+          <div class="toc-row active"><strong>01</strong><span><b>Executive Summary</b>The case for governance that accelerates value.</span></div>
+          <div class="toc-row"><strong>02</strong><span><b>The 3S Framework</b>Stream. System. Solution.</span></div>
+          <div class="toc-row"><strong>03</strong><span><b>Governance Principles</b>The non-negotiables for trusted agents.</span></div>
+          <div class="toc-row"><strong>04</strong><span><b>Operating Model</b>People, process, and platforms working together.</span></div>
+          <div class="toc-row"><strong>05</strong><span><b>Risk and Control Model</b>From risks to controls to continuous assurance.</span></div>
+          <div class="toc-row"><strong>06</strong><span><b>Roles and Responsibilities</b>RACI for accountable governance.</span></div>
+          <div class="toc-row"><strong>07</strong><span><b>Implementation Roadmap</b>0-90-180 day plan to enterprise scale.</span></div>
+          <div class="toc-row"><strong>08</strong><span><b>Maturity Model</b>From foundational to industry leading.</span></div>
+          <div class="toc-row"><strong>09</strong><span><b>CIO / CTO Checklist</b>20 actions to get started now.</span></div>
+          <div class="toc-row"><strong>10</strong><span><b>Resources and Downloads</b>Templates, tools, and references.</span></div>
+        </div>
+        <div class="book-area">
+          <div>
+            <div class="book" aria-label="Agentic AI Governance Playbook cover mockup">
+              <h3>Agentic AI Governance Playbook</h3>
+              <p>A practical guide to govern agents with trust, control, and impact.</p>
+              <span class="brand"><span class="brand-logo">Capgemini<span class="brand-mark" aria-hidden="true"></span></span></span>
+            </div>
+            <div style="text-align:center;margin-top:28px;">
+              <button class="button" onclick="window.print()">Download full playbook (PDF)</button>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit"><div class="card-icon">◎</div><div><h4>Actionable</h4><p>Step-by-step guidance senior leaders and delivery teams can apply.</p></div></div>
+            <div class="benefit"><div class="card-icon">☷</div><div><h4>Practical</h4><p>Templates, checklists, maturity models, and reference controls.</p></div></div>
+            <div class="benefit"><div class="card-icon">↗</div><div><h4>Proven</h4><p>Built from industry standards, WEF collaboration, and enterprise architecture practice.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section two-col">
+        <div>
+          <p class="label">Point of View</p>
+          <h2>From AI governance to agent governance.</h2>
+          <p class="lead">Agentic systems require a wider lens than model risk alone. Leaders must govern the business stream, the technical system, and the solution components that make agents useful.</p>
+        </div>
+        <div class="quote">The enterprise challenge is not whether agents can be controlled. It is whether governance can become part of how agents are designed, approved, operated, and improved.</div>
+      </div>
+    </section>
+
+    <section id="framework" class="section">
+      <p class="label">The 3S Enterprise Framework</p>
+      <h2>Stream. System. Solution.</h2>
+      <p class="lead">The 3S framework gives leaders a simple, memorable structure for applying governance across the full agentic enterprise. It connects value, runtime control, and solution design into one operating model.</p>
+
+      <table class="framework-table" aria-label="3S framework table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Governance question</th>
+            <th>What to govern</th>
+            <th>Executive evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>S1 Stream</strong><br><span class="tag">Value orchestration</span></td>
+            <td>Are agents focused on the right business outcomes, journeys, and decisions?</td>
+            <td>Market trends, business and technology strategy, budget, sponsors, use cases, target journeys, demand planning, build and run economics, realized value.</td>
+            <td>Value case, prioritized portfolio, accountable sponsors, agent journey map, benefits dashboard, adoption and risk heatmap.</td>
+          </tr>
+          <tr>
+            <td><strong>S2 System</strong><br><span class="tag">Enterprise operating system</span></td>
+            <td>Can the enterprise operate agents safely, repeatedly, and at scale?</td>
+            <td>Capabilities, processes, skills, culture, procurement, organization, data, knowledge, platforms, infrastructure, networks, regulation, policies.</td>
+            <td>Operating model, governance forums, policy library, platform standards, control plane, skill plan, vendor and cost model.</td>
+          </tr>
+          <tr>
+            <td><strong>S3 Solution</strong><br><span class="tag">Trusted agent design</span></td>
+            <td>Is each agent safe, observable, compliant, and fit for its task?</td>
+            <td>Agent identity, model, instructions, tools, evaluations, grounding data, integrations, DevSecOps lifecycle, environment zones, compliance.</td>
+            <td>Agent card, risk assessment, test results, tool permissions, audit logs, release gate, human approval rules, decommissioning plan.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <p class="label">Governance Principles</p>
+      <h2>Nine principles for trusted agentic systems.</h2>
+      <div class="principles">
+        <div class="principle"><strong>Reliable</strong><p>Agents must be evaluated in conditions close to their intended operating environment and monitored for regression.</p></div>
+        <div class="principle"><strong>Responsible</strong><p>Every agent must have a business owner, technical owner, risk owner, and escalation path.</p></div>
+        <div class="principle"><strong>Sustainable</strong><p>Energy, cost, vendor dependency, and lifecycle maintainability should be considered before scaling.</p></div>
+        <div class="principle"><strong>Trusted</strong><p>Controls must address privacy, security, safety, fairness, transparency, and regulatory obligations.</p></div>
+        <div class="principle"><strong>Sovereign</strong><p>Data residency, model location, intellectual property, and third-party dependencies must be visible and governed.</p></div>
+        <div class="principle"><strong>Adaptable</strong><p>Governance must evolve as models, tools, standards, and enterprise risk appetite change.</p></div>
+        <div class="principle"><strong>Operationally resilient</strong><p>Agents need fallback modes, interruptibility, incident response, recovery, and decommissioning controls.</p></div>
+        <div class="principle"><strong>Cost optimal</strong><p>Agent portfolios should be measured for cost-to-serve, avoided work, quality, cycle time, and risk-adjusted value.</p></div>
+        <div class="principle"><strong>Human oversight</strong><p>Humans should approve, supervise, or audit actions based on autonomy, authority, context, and impact.</p></div>
+      </div>
+    </section>
+
+    <section id="operating-model" class="band">
+      <div class="section">
+        <p class="label">Operating Model</p>
+        <h2>Governance that works in the flow of delivery.</h2>
+        <p class="lead">The operating model should create a governed path from idea to production, with clear decision rights and reusable controls. The aim is not to slow delivery; it is to reduce uncertainty so teams can scale agents safely.</p>
+
+        <div class="model-flow">
+          <article class="flow-step">
+            <span class="step-num">1</span>
+            <h3>Discover</h3>
+            <p>Identify agent opportunities by value stream, process friction, data readiness, risk profile, and sponsor commitment.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-num">2</span>
+            <h3>Classify</h3>
+            <p>Rate each agent by function, autonomy, authority, predictability, data sensitivity, external exposure, and reversibility.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-num">3</span>
+            <h3>Control</h3>
+            <p>Apply least agency, identity, tool permissions, data boundaries, environment zones, approval gates, and monitoring.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-num">4</span>
+            <h3>Operate</h3>
+            <p>Run agents with service management, SRE practices, incident response, audit trails, cost monitoring, and policy updates.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-num">5</span>
+            <h3>Improve</h3>
+            <p>Use evaluation results, user feedback, incidents, and regulatory changes to improve prompts, tools, data, and controls.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="risk-controls" class="section">
+      <p class="label">Risk and Control Model</p>
+      <h2>Move from risk taxonomy to control evidence.</h2>
+      <p class="lead">The control model should translate OWASP, NIST, ISO, EU AI Act, CSA, and enterprise policy obligations into evidence that can be reviewed by architecture, security, risk, legal, and business owners.</p>
+
+      <div class="risk-map">
+        <div class="risk-cell"><strong>Goal and instruction risk</strong><p>Goal hijacking, prompt injection, conflicting instructions, unsafe defaults.</p><span class="tag">Control: locked objectives</span><span class="tag">Human approval</span></div>
+        <div class="risk-cell"><strong>Tool and action risk</strong><p>Tool misuse, code execution, over-privileged APIs, irreversible actions.</p><span class="tag">Control: tool allowlists</span><span class="tag">Least agency</span></div>
+        <div class="risk-cell"><strong>Identity and access risk</strong><p>Credential exposure, privilege abuse, weak agent attribution, proxy access.</p><span class="tag">Control: agent identity</span><span class="tag">Zero trust</span></div>
+        <div class="risk-cell"><strong>Data and memory risk</strong><p>Sensitive data leakage, memory poisoning, vector store exposure, context oversharing.</p><span class="tag">Control: AI-DSPM</span><span class="tag">Data boundaries</span></div>
+        <div class="risk-cell"><strong>Ecosystem risk</strong><p>Supply chain vulnerabilities, insecure inter-agent communication, rogue agents, cascading failures.</p><span class="tag">Control: registry</span><span class="tag">Runtime monitoring</span></div>
+      </div>
+
+      <div class="three-col" style="margin-top:28px;">
+        <article class="plain-card accent">
+          <h3>Preventive controls</h3>
+          <p>Agent approval, model catalog, tool registry, environment zones, identity, least privilege, least agency, data classification, secure patterns, and release gates.</p>
+        </article>
+        <article class="plain-card accent teal">
+          <h3>Detective controls</h3>
+          <p>Runtime telemetry, tool-call logs, anomaly detection, prompt injection detection, data leakage monitoring, retrieval quality metrics, and audit trails.</p>
+        </article>
+        <article class="plain-card accent orange">
+          <h3>Responsive controls</h3>
+          <p>Kill switch, credential revocation, rollback, incident response, human escalation, user notification, model/tool quarantine, and post-incident learning.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section">
+        <p class="label">Roles and Responsibilities</p>
+        <h2>Accountability must be explicit.</h2>
+        <table class="framework-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Primary accountability</th>
+              <th>Key decisions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>CIO / CTO</strong></td><td>Enterprise platform, architecture, and technology strategy.</td><td>Approved platforms, agent control plane, build versus buy, reliability standards.</td></tr>
+            <tr><td><strong>Chief AI / Data Officer</strong></td><td>AI governance, data readiness, and portfolio alignment.</td><td>Inventory, use-case prioritization, model policy, data controls, measurement.</td></tr>
+            <tr><td><strong>CISO</strong></td><td>Security, identity, threat modeling, and incident readiness.</td><td>Tool permissions, access policy, runtime monitoring, red teaming, response playbooks.</td></tr>
+            <tr><td><strong>Enterprise Architect</strong></td><td>Design standards, integration patterns, and lifecycle gates.</td><td>Reference architectures, environment zones, integration guardrails, reusable patterns.</td></tr>
+            <tr><td><strong>Business Sponsor</strong></td><td>Business outcome, adoption, and acceptable risk.</td><td>Value case, target journey, process change, exception approvals, benefit realization.</td></tr>
+            <tr><td><strong>Risk / Legal / Compliance</strong></td><td>Regulatory interpretation, control evidence, and policy exceptions.</td><td>Framework mapping, assurance scope, high-risk review, documentation requirements.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <p class="label">Implementation Roadmap</p>
+      <h2>A pragmatic path from experimentation to enterprise scale.</h2>
+      <p class="lead">Start with inventory and guardrails, prove the operating model on priority use cases, then industrialize with a control plane and measurable assurance.</p>
+      <div class="timeline">
+        <article class="phase">
+          <h3>0-30 days: Establish control</h3>
+          <ul>
+            <li>Create the agent inventory and intake process.</li>
+            <li>Define agent risk tiers and approval thresholds.</li>
+            <li>Nominate executive sponsor and governance owners.</li>
+            <li>Freeze high-risk autonomous actions until reviewed.</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <h3>31-60 days: Prove the model</h3>
+          <ul>
+            <li>Select 3-5 priority agent streams.</li>
+            <li>Apply 3S classification and control requirements.</li>
+            <li>Run evaluation, red-team, and business acceptance tests.</li>
+            <li>Stand up evidence packs for leadership review.</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <h3>61-90 days: Build the governed path</h3>
+          <ul>
+            <li>Publish reference architecture and reusable templates.</li>
+            <li>Implement agent registry, identity, and tool control patterns.</li>
+            <li>Connect telemetry into security and service management.</li>
+            <li>Create product owner and operator training.</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <h3>90+ days: Scale and assure</h3>
+          <ul>
+            <li>Launch the Agentic Control Plane.</li>
+            <li>Move from project review to continuous assurance.</li>
+            <li>Measure value, risk reduction, adoption, and cost.</li>
+            <li>Refresh controls as standards and regulations evolve.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section">
+        <p class="label">Maturity Model</p>
+        <h2>Five levels of agentic governance maturity.</h2>
+        <div class="maturity">
+          <div class="maturity-level">
+            <h3>1. Ad hoc</h3>
+            <p>Teams experiment independently. Governance is unclear, agent ownership is inconsistent, and visibility is limited.</p>
+            <span class="tag">Shadow AI risk</span>
+          </div>
+          <div class="maturity-level">
+            <h3>2. Registered</h3>
+            <p>Agents are inventoried. Basic intake, ownership, and acceptable-use policies exist, but controls are still manual.</p>
+            <span class="tag">Inventory</span>
+          </div>
+          <div class="maturity-level">
+            <h3>3. Controlled</h3>
+            <p>Risk-tiered approvals, tool permissions, data controls, and evaluation gates are part of the delivery lifecycle.</p>
+            <span class="tag">Release gates</span>
+          </div>
+          <div class="maturity-level">
+            <h3>4. Observable</h3>
+            <p>Runtime telemetry, audit trails, incident response, and cost monitoring are integrated into enterprise operations.</p>
+            <span class="tag">Continuous assurance</span>
+          </div>
+          <div class="maturity-level">
+            <h3>5. Adaptive</h3>
+            <p>Governance is automated, policy-driven, and continuously improved using evidence, incidents, standards, and value metrics.</p>
+            <span class="tag">Agentic control plane</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="label">CIO / CTO Action Checklist</p>
+      <h2>Twenty decisions to make now.</h2>
+      <div class="checklist">
+        <div class="check"><span>1</span><p>Do we have a complete inventory of deployed and planned agents?</p></div>
+        <div class="check"><span>2</span><p>Does every agent have a named business owner, technical owner, and risk owner?</p></div>
+        <div class="check"><span>3</span><p>Have we defined which actions agents may never take autonomously?</p></div>
+        <div class="check"><span>4</span><p>Are agent identities separate from human accounts and generic service accounts?</p></div>
+        <div class="check"><span>5</span><p>Can we see which tools, data sources, APIs, and systems each agent can access?</p></div>
+        <div class="check"><span>6</span><p>Are tool calls logged with enough detail to reconstruct what happened and why?</p></div>
+        <div class="check"><span>7</span><p>Do high-impact actions require human approval or staged release?</p></div>
+        <div class="check"><span>8</span><p>Have we tested for prompt injection, memory poisoning, data leakage, and rogue actions?</p></div>
+        <div class="check"><span>9</span><p>Are agents evaluated against real workflows, edge cases, and failure modes?</p></div>
+        <div class="check"><span>10</span><p>Do we have a kill switch, rollback path, and credential revocation process?</p></div>
+        <div class="check"><span>11</span><p>Are data residency, classification, retention, and deletion requirements enforced?</p></div>
+        <div class="check"><span>12</span><p>Can teams access approved patterns quickly enough to avoid shadow AI?</p></div>
+        <div class="check"><span>13</span><p>Are procurement and third-party agent tools covered by supply chain review?</p></div>
+        <div class="check"><span>14</span><p>Is there a standard agent card for documentation and approval evidence?</p></div>
+        <div class="check"><span>15</span><p>Have we mapped controls to NIST AI RMF, ISO/IEC 42001, EU AI Act, OWASP, and CSA?</p></div>
+        <div class="check"><span>16</span><p>Do we measure value realization alongside risk and control performance?</p></div>
+        <div class="check"><span>17</span><p>Are operators trained to manage agent failures and escalations?</p></div>
+        <div class="check"><span>18</span><p>Do we have environment zones for experimentation, controlled pilot, and production?</p></div>
+        <div class="check"><span>19</span><p>Are multi-agent interactions and delegation paths visible and bounded?</p></div>
+        <div class="check"><span>20</span><p>Is governance updated as model capabilities, standards, and regulations change?</p></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section">
+        <p class="label">Capgemini-Positioned Offers</p>
+        <h2>Make agentic governance real.</h2>
+        <p class="lead">The following offer modules are included as configurable placeholders and should be validated with Capgemini account, portfolio, and legal teams before client publication.</p>
+        <div class="offer-grid">
+          <article class="offer">
+            <b>Industry Agentic Studio</b>
+            <p>Discover and design industry-neutral or sector-specific agent value streams, use cases, target journeys, and adoption roadmaps.</p>
+          </article>
+          <article class="offer">
+            <b>Trusted AI</b>
+            <p>Assess and strengthen AI governance, responsible AI controls, data protection, testing, transparency, and regulatory readiness.</p>
+          </article>
+          <article class="offer">
+            <b>WEF Collaboration</b>
+            <p>Position thought leadership using the WEF and Capgemini work on AI agent evaluation, classification, and progressive governance.</p>
+          </article>
+          <article class="offer">
+            <b>Agentic Control Plane</b>
+            <p>Design the runtime governance layer for identity, policy enforcement, observability, tool controls, and continuous assurance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="assets" class="section">
+      <p class="label">Downloadable-Style Assets</p>
+      <h2>Reusable tools for leadership and delivery teams.</h2>
+      <p class="lead">These browser-generated assets are lightweight starter templates. Replace placeholders with client-specific controls, policies, and evidence requirements.</p>
+      <div class="download-grid">
+        <article class="download-card">
+          <div class="card-icon">A</div>
+          <div>
+            <h4>Governance Policy Template</h4>
+            <p>Purpose, scope, decision rights, control requirements, and exception process.</p>
+            <button data-template="policy">Download TXT</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">B</div>
+          <div>
+            <h4>Agent Inventory Template</h4>
+            <p>CSV starter for ownership, autonomy, authority, tools, data, and risk tier.</p>
+            <button data-template="inventory">Download CSV</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">C</div>
+          <div>
+            <h4>Risk and Control Library</h4>
+            <p>Core risks mapped to preventive, detective, and responsive controls.</p>
+            <button data-template="controls">Download TXT</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">D</div>
+          <div>
+            <h4>Maturity Assessment</h4>
+            <p>Questions to assess readiness from ad hoc to adaptive governance.</p>
+            <button data-template="maturity">Download TXT</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">E</div>
+          <div>
+            <h4>RACI Matrix</h4>
+            <p>Role clarity across strategy, architecture, security, risk, delivery, and operations.</p>
+            <button data-template="raci">Download CSV</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">F</div>
+          <div>
+            <h4>Use Case Assessment Guide</h4>
+            <p>Screen agent use cases for value, feasibility, data readiness, and risk.</p>
+            <button data-template="usecase">Download TXT</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="label">Regulatory and Standards Alignment</p>
+      <h2>Credibility comes from mapping, not name-checking.</h2>
+      <div class="two-col">
+        <div>
+          <p>The playbook references established and emerging frameworks to create a common language for executives, architects, security teams, risk teams, and regulators. The intent is not to duplicate these frameworks, but to translate them into practical controls for agentic systems.</p>
+          <div>
+            <span class="tag">NIST AI RMF</span>
+            <span class="tag">ISO/IEC 42001</span>
+            <span class="tag">EU AI Act</span>
+            <span class="tag">OWASP Agentic Top 10</span>
+            <span class="tag">OWASP GenAI Data Security</span>
+            <span class="tag">CSA MAESTRO</span>
+            <span class="tag">CISA guidance</span>
+          </div>
+        </div>
+        <div class="note">
+          <strong>Assumption to validate:</strong> This report is designed as a leadership and transformation asset, not legal advice. Client-specific regulatory obligations should be validated by qualified legal and compliance teams.
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section">
+        <p class="label">References Used</p>
+        <h2>Grounded in the project source pack.</h2>
+        <ol class="source-list">
+          <li>World Economic Forum and Capgemini, <em>AI Agents in Action: Foundations for Evaluation and Governance</em>, 2025.</li>
+          <li>OWASP GenAI Security Project, <em>OWASP Top 10 for Agentic Applications 2026</em>.</li>
+          <li>OWASP GenAI Security Project, <em>GenAI Data Security Risks and Mitigations 2026</em>.</li>
+          <li>Microsoft Open Source Blog, <em>Introducing the Agent Governance Toolkit</em>, 2026.</li>
+          <li>Microsoft, <em>Agent Governance Toolkit</em>, GitHub repository.</li>
+          <li>AWS Prescriptive Guidance, <em>Governing and architecting the diversity of Agentic AI at scale</em>, 2026.</li>
+          <li>OpenAI et al., <em>Practices for Governing Agentic AI Systems</em>.</li>
+          <li>Google, <em>Google's Approach for Secure AI Agents: An Introduction</em>, 2025.</li>
+          <li>Cloud Security Alliance, <em>Agentic AI Governance: NIST Standards for Autonomous Systems</em>, 2026.</li>
+          <li>Gartner, <em>Executive Insights on AI Governance</em>, 2026.</li>
+          <li>Capgemini, <em>Brand Identity Guidelines</em>, 2025.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>Make it real.</footer>
+
+  <script>
+    const templates = {
+      policy: {
+        name: "agentic-ai-governance-policy-template.txt",
+        type: "text/plain",
+        body: `Agentic AI Governance Policy Template\n\n1. Purpose\nDefine how the organization governs agentic AI systems that can plan, use tools, use memory, delegate, or take actions.\n\n2. Scope\nInclude all internal, third-party, citizen-developed, and embedded agents used by employees, partners, or customers.\n\n3. Minimum Requirements\n- Registered agent owner and business sponsor\n- Risk tier and intended use\n- Approved model, tools, data sources, and integrations\n- Human oversight rules\n- Evaluation evidence\n- Runtime logging and monitoring\n- Incident response and shutdown path\n\n4. Exceptions\nDocument business rationale, compensating controls, expiry date, and approval authority.\n`
+      },
+      inventory: {
+        name: "agent-inventory-template.csv",
+        type: "text/csv",
+        body: "Agent Name,Business Owner,Technical Owner,Risk Owner,Use Case,3S Layer,Autonomy Level,Authority Level,Data Sensitivity,Tools/APIs,Model,Environment,Human Approval Required,Logging Enabled,Risk Tier,Status,Review Date\n"
+      },
+      controls: {
+        name: "agentic-risk-control-library.txt",
+        type: "text/plain",
+        body: `Agentic AI Risk and Control Library\n\nRisk: Goal hijacking\nPreventive: Locked objectives, prompt injection safeguards, high-impact approval.\nDetective: Goal drift monitoring, anomalous instruction detection.\nResponsive: Session halt, rollback, incident review.\n\nRisk: Tool misuse\nPreventive: Tool allowlist, least agency, scoped credentials.\nDetective: Tool-call telemetry, unusual sequence alerts.\nResponsive: Tool quarantine, credential revocation.\n\nRisk: Data leakage\nPreventive: Data classification, retrieval permissions, context minimization.\nDetective: DLP monitoring, output scanning, telemetry review.\nResponsive: User notification, purge memory, remediate source exposure.\n`
+      },
+      maturity: {
+        name: "agentic-governance-maturity-assessment.txt",
+        type: "text/plain",
+        body: `Agentic Governance Maturity Assessment\n\nScore each question 1-5.\n\n1. Do we maintain an inventory of all agents?\n2. Does every agent have business, technical, and risk ownership?\n3. Are autonomy and authority levels defined and approved?\n4. Are tool permissions enforced at runtime?\n5. Are agent actions logged and auditable?\n6. Are prompt injection, memory poisoning, data leakage, and tool misuse tested?\n7. Is there a kill switch and incident process?\n8. Are controls mapped to NIST, ISO, EU AI Act, OWASP, and CSA where relevant?\n9. Is agent cost and value measured?\n10. Does governance improve based on evidence and incidents?\n`
+      },
+      raci: {
+        name: "agentic-ai-raci-matrix.csv",
+        type: "text/csv",
+        body: "Activity,CIO/CTO,Chief AI/Data Officer,CISO,Enterprise Architect,Business Sponsor,Risk/Legal,Product Owner,Operations\nAgent strategy,A,R,C,C,A,C,C,I\nAgent inventory,A,R,C,C,C,I,R,I\nRisk classification,C,A,R,C,C,A,R,I\nReference architecture,A,C,C,R,I,C,C,I\nTool permission policy,C,C,A,R,I,C,R,I\nProduction approval,A,A,A,R,A,C,R,C\nRuntime monitoring,I,C,A,C,I,C,R,A\nIncident response,I,C,A,C,A,C,R,A\n"
+      },
+      usecase: {
+        name: "agent-use-case-assessment-guide.txt",
+        type: "text/plain",
+        body: `Agent Use Case Assessment Guide\n\n1. Business value\nWhat outcome improves? What metric changes? Who owns the benefit?\n\n2. Process fit\nIs the workflow stable enough to automate or augment? Where is human judgment still required?\n\n3. Data readiness\nWhat data is needed? Is it classified, current, permissioned, and traceable?\n\n4. Agent authority\nWhat actions can the agent take? Which are read-only, reversible, or high impact?\n\n5. Risk profile\nCould the agent leak data, misuse tools, make unauthorized decisions, or create cascading effects?\n\n6. Control design\nWhat preventive, detective, and responsive controls are required before pilot and before production?\n`
+      }
+    };
+
+    document.querySelectorAll("[data-template]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = templates[button.dataset.template];
+        const blob = new Blob([item.body], { type: item.type });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = item.name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    });
+
+    const progress = document.getElementById("pageProgress");
+    const sections = [...document.querySelectorAll("main section[id]")];
+    const navLinks = [...document.querySelectorAll("#navLinks a")];
+
+    function updateScrollState() {
+      const scrollTop = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = height > 0 ? `${Math.min(100, (scrollTop / height) * 100)}%` : "0%";
+
+      let current = "";
+      for (const section of sections) {
+        if (section.offsetTop - 140 <= scrollTop) current = section.id;
+      }
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+      });
+    }
+
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    updateScrollState();
+  </script>
+</body>
+</html>
