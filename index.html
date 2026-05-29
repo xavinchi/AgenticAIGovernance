@@ -1743,6 +1743,30 @@
             <button data-template="usecase">Download TXT</button>
           </div>
         </article>
+        <article class="download-card">
+          <div class="card-icon">G</div>
+          <div>
+            <h4>Capability Mapping Tool</h4>
+            <p>Map enterprise capabilities to agent opportunities, S3 layers, controls, and readiness gaps.</p>
+            <button data-template="capability">Download CSV</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">H</div>
+          <div>
+            <h4>Vendor Assessment</h4>
+            <p>Evaluate agent platforms, models, tools, and control-plane vendors against governance needs.</p>
+            <button data-template="vendor">Download TXT</button>
+          </div>
+        </article>
+        <article class="download-card">
+          <div class="card-icon">I</div>
+          <div>
+            <h4>AI Fluency Diagnostics</h4>
+            <p>Assess leadership, product, engineering, risk, and operations fluency for agentic adoption.</p>
+            <button data-template="fluency">Download TXT</button>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1822,6 +1846,21 @@
         name: "agent-use-case-assessment-guide.txt",
         type: "text/plain",
         body: `Agent Use Case Assessment Guide\n\n1. Business value\nWhat outcome improves? What metric changes? Who owns the benefit?\n\n2. Process fit\nIs the workflow stable enough to automate or augment? Where is human judgment still required?\n\n3. Data readiness\nWhat data is needed? Is it classified, current, permissioned, and traceable?\n\n4. Agent authority\nWhat actions can the agent take? Which are read-only, reversible, or high impact?\n\n5. Risk profile\nCould the agent leak data, misuse tools, make unauthorized decisions, or create cascading effects?\n\n6. Control design\nWhat preventive, detective, and responsive controls are required before pilot and before production?\n`
+      },
+      capability: {
+        name: "agentic-ai-capability-mapping-tool.csv",
+        type: "text/csv",
+        body: "Business Capability,Current Pain Point,Agent Opportunity,S3 Layer,Target User,Process Owner,Data Sources,Tools/APIs Needed,Autonomy Level,Authority Level,Expected Value,Risk Tier,Required Controls,Readiness Score 1-5,Priority,Next Step\nCustomer operations,Manual triage,Agent-assisted case routing,S1 Stream,Service manager,Operations lead,CRM; Knowledge base,CRM API; Search,Medium,Recommend only,Cycle time reduction,Medium,Human approval; logging; data access review,3,High,Run discovery workshop\n"
+      },
+      vendor: {
+        name: "agentic-ai-vendor-assessment.txt",
+        type: "text/plain",
+        body: `Agentic AI Vendor Assessment\n\nScore each area 1-5 and capture evidence.\n\n1. Strategic fit\n- Which agentic use cases does the vendor support?\n- Does the vendor align to enterprise architecture and approved cloud/platform strategy?\n- Is the roadmap credible for multi-agent, tool-use, and runtime governance needs?\n\n2. Security and identity\n- Does the platform support dedicated agent identities and scoped permissions?\n- Can tool calls be authorized using both agent and user context?\n- How are credentials stored, rotated, revoked, and audited?\n\n3. Runtime governance\n- Are policies enforced before actions execute?\n- Can high-risk actions require human approval?\n- Are allowlists, blocklists, rate limits, circuit breakers, and kill switches supported?\n\n4. Observability and evidence\n- Are prompts, retrievals, tool calls, policy decisions, approvals, and outputs logged?\n- Can logs be exported to SIEM, service management, and audit tooling?\n- Does the platform provide evidence for NIST, ISO/IEC 42001, EU AI Act, OWASP, and CSA mapping?\n\n5. Data and privacy\n- How are data classification, residency, retention, deletion, and tenant isolation handled?\n- Are vector stores, memory, telemetry, and user feedback governed?\n- Can sensitive data be redacted from prompts, outputs, and logs?\n\n6. Evaluation and assurance\n- What evaluation, red-team, prompt-injection, and regression testing capabilities are included?\n- Can tests be automated in CI/CD?\n- Can model, tool, and prompt changes be versioned and approved?\n\n7. Commercial and operational viability\n- Pricing model and consumption controls\n- Support model and SLAs\n- Exit strategy and portability\n- Vendor risk and supply chain transparency\n\nDecision: Approve / Approve with conditions / Pilot only / Reject\n`
+      },
+      fluency: {
+        name: "ai-fluency-diagnostics.txt",
+        type: "text/plain",
+        body: `AI Fluency Diagnostics for Agentic AI\n\nUse this diagnostic to assess whether leaders and teams understand enough to adopt agents responsibly. Score each statement 1-5.\n\nLeadership fluency\n1. Executives can explain how agentic AI differs from chatbots and workflow automation.\n2. Leaders can connect agent use cases to business outcomes, risk appetite, and operating model change.\n3. Leaders understand where human oversight is required.\n\nProduct and business fluency\n4. Product owners can define an agent's goal, operating boundaries, users, success metrics, and failure modes.\n5. Business teams can identify process steps that should remain human-led, assisted, or automated.\n6. Teams can write acceptance criteria for agent behavior and escalation.\n\nEngineering and architecture fluency\n7. Teams understand agent identity, tool permissions, retrieval, memory, orchestration, and environment zones.\n8. Teams can design for least agency, least privilege, logging, rollback, and decommissioning.\n9. Teams can distinguish prompt controls from runtime controls.\n\nRisk, security, and compliance fluency\n10. Teams understand OWASP agentic risks such as goal hijacking, tool misuse, identity abuse, memory poisoning, and cascading failures.\n11. Teams can map agent controls to NIST AI RMF, ISO/IEC 42001, EU AI Act, OWASP, and CSA where relevant.\n12. Teams know what evidence must be retained for audit and incident response.\n\nOperations fluency\n13. Operators know how to monitor agents, detect anomalies, escalate incidents, and revoke access.\n14. Support teams understand user feedback loops, incident triage, and service ownership.\n15. Finance and operations can track cost, consumption, value, and benefits realization.\n\nScoring guide\n1-2: Foundational learning required before scaling.\n3: Ready for controlled pilots with coaching.\n4: Ready for governed production in defined use cases.\n5: Ready to scale and coach other teams.\n`
       }
     };
 
